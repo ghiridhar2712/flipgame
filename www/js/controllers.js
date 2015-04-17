@@ -33,8 +33,12 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('PlaylistsCtrl', function ($scope, $interval) {
+.controller('PlaylistsCtrl', function ($scope, $interval, $interval) {
     var count = 0;
+    var proceed = 1;
+    $scope.time = 60;
+    $scope.score = 0;
+    $scope.correct = 0;
     var first = "";
     var second = "";
     var pos1 = -1;
@@ -130,8 +134,19 @@ angular.module('starter.controllers', [])
     $scope.numbers2 = split($scope.numbers, 4, 4);
     $scope.bind = split($scope.bind, 4, 4);
 
+
     $scope.change = function (i, index) {
-        if (!(pos1 == i && pos2 == index)) {
+        $interval(timer, 1000, 0);
+
+        if (!(pos1 == i && pos2 == index) && proceed) {
+            var timer = function () {
+                console.log("entered in period");
+                $scope.time -= 1;
+                if ($scope.time == 0) {
+                    proceed = 0;
+                    alert("You are out of time please try again");
+                };
+            };
 
             var reset = function () {
                 $scope.bind[i][index] = $scope.numbers2[i][index].id;
@@ -166,17 +181,23 @@ angular.module('starter.controllers', [])
             };
 
             if (first != second && count == 2) {
+
                 $interval(reset, 500, 1);
             };
             if (count == 2 && first == second) {
-                    emptyfields();
+                $scope.score += 10;
+                $scope.correct += 1;
+                if ($scope.correct == 8) {
+                    alert("You are done");
+                };
+                emptyfields();
+
             };
-
-
         };
+
 
     };
 
 })
 
-.controller('PlaylistCtrl', function ($scope, $stateParams) {});
+.controller('PlaylistCtrl', function ($scope, $stateParams) {})

@@ -14,14 +14,8 @@
   <button ng-repeat="x in numbers2[3]" ng-click="change(3,$index)" class="col design" ng-bind="bind[3][$index]"></div>
   </button>
           </div>
-     
+   <p>Your score is: {{score}}</p>
+     <button ng-show="correct==8" ng-click="new()">Restart</button>
   </ion-content>
 </ion-view>
 
-/*
-function(0,$index)
-
-$scope.name = fy  (i, number)
-{
-    content[number][i2] = abc;
-};*/
