@@ -133,20 +133,21 @@ angular.module('starter.controllers', [])
     console.log($scope.bind);
     $scope.numbers2 = split($scope.numbers, 4, 4);
     $scope.bind = split($scope.bind, 4, 4);
+    var timer = function () {
+        console.log("entered in period");
+        $scope.time -= 1;
+        if ($scope.time == 0) {
+            proceed = 0;
+            alert("You are out of time please try again");
+        };
+    };
+
 
 
     $scope.change = function (i, index) {
         $interval(timer, 1000, 0);
 
         if (!(pos1 == i && pos2 == index) && proceed) {
-            var timer = function () {
-                console.log("entered in period");
-                $scope.time -= 1;
-                if ($scope.time == 0) {
-                    proceed = 0;
-                    alert("You are out of time please try again");
-                };
-            };
 
             var reset = function () {
                 $scope.bind[i][index] = $scope.numbers2[i][index].id;
