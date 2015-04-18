@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('PlaylistsCtrl', function ($scope, $interval, $interval) {
+.controller('PlaylistsCtrl', function ($scope, $interval) {
     var count = 0;
     var proceed = 1;
     $scope.time = 60;
@@ -43,20 +43,6 @@ angular.module('starter.controllers', [])
     var second = "";
     var pos1 = -1;
     var pos2 = -1;
-    var split = function (array, noofarrays, splitnumber) {
-        console.log(array);
-        var array1 = [];
-        var array2 = [];
-        for (var i = 0; i < noofarrays; i++) {
-            array1 = array.slice(0, splitnumber);
-            array2.push(array1);
-            array1 = [];
-            array.splice(0, splitnumber);
-        };
-        console.log(array2);
-        return array2;
-    };
-
 
     $scope.numbers = [{
             "id": 1,
@@ -123,29 +109,46 @@ angular.module('starter.controllers', [])
             "title": "ghiridhar"
         }];
 
+    var split = function (array, noofarrays, splitnumber) {
+        console.log(array);
+        var array1 = [];
+        var array2 = [];
+        for (var i = 0; i < noofarrays; i++) {
+            array1 = array.slice(0, splitnumber);
+            array2.push(array1);
+            array1 = [];
+            array.splice(0, splitnumber);
+        };
+        console.log(array2);
+        return array2;
+    };
+
     $scope.bind = [];
 
     for (var q = 0; q < $scope.numbers.length; q++) {
         $scope.bind[q] = $scope.numbers[q].id;
 
-
     };
     console.log($scope.bind);
     $scope.numbers2 = split($scope.numbers, 4, 4);
     $scope.bind = split($scope.bind, 4, 4);
+
     var timer = function () {
         console.log("entered in period");
         $scope.time -= 1;
         if ($scope.time == 0) {
             proceed = 0;
-            alert("You are out of time please try again");
+            alert("Oops! Time Up!!");
+            $scope.time = 60;
+            $scope.score = 0;
+            $scope.correct = 0;
+
         };
     };
 
-
-
+    $interval(timer, 1000, 0);
     $scope.change = function (i, index) {
-        $interval(timer, 1000, 0);
+
 
         if (!(pos1 == i && pos2 == index) && proceed) {
 
@@ -188,8 +191,12 @@ angular.module('starter.controllers', [])
             if (count == 2 && first == second) {
                 $scope.score += 10;
                 $scope.correct += 1;
-                if ($scope.correct == 8) {
-                    alert("You are done");
+                if (correct == 8) {
+                    alert("Solved Do Play Again");
+                    $scope.time = 60;
+                    $scope.score = 0;
+                    $scope.correct = 0;
+
                 };
                 emptyfields();
 
