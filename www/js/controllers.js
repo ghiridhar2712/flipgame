@@ -44,6 +44,21 @@ angular.module('starter.controllers', [])
     var pos1 = -1;
     var pos2 = -1;
 
+    var split = function (array, noofarrays, splitnumber) {
+        console.log(array);
+        var array1 = [];
+        var array2 = [];
+        for (var i = 0; i < noofarrays; i++) {
+            array1 = array.slice(0, splitnumber);
+            array2.push(array1);
+            array1 = [];
+            array.splice(0, splitnumber);
+        };
+        console.log(array2);
+        return array2;
+    };
+
+
     $scope.numbers = [{
             "id": 1,
             "title": "abhay"
@@ -109,19 +124,6 @@ angular.module('starter.controllers', [])
             "title": "ghiridhar"
         }];
 
-    var split = function (array, noofarrays, splitnumber) {
-        console.log(array);
-        var array1 = [];
-        var array2 = [];
-        for (var i = 0; i < noofarrays; i++) {
-            array1 = array.slice(0, splitnumber);
-            array2.push(array1);
-            array1 = [];
-            array.splice(0, splitnumber);
-        };
-        console.log(array2);
-        return array2;
-    };
 
     $scope.bind = [];
 
@@ -191,7 +193,7 @@ angular.module('starter.controllers', [])
             if (count == 2 && first == second) {
                 $scope.score += 10;
                 $scope.correct += 1;
-                if (correct == 8) {
+                if ($scope.correct == 8) {
                     alert("Solved Do Play Again");
                     $scope.time = 60;
                     $scope.score = 0;
