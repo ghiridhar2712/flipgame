@@ -1,21 +1,30 @@
 <ion-view view-title="Playlists">
-  <ion-content>
+    <ion-content>
 
-          <div class="row">
-  <button ng-repeat="x in numbers2[0]" ng-click="change(0,$index)" class="col design" ng-bind="bind[0][$index]"></div>
-  </button>
-      <div class="row">
-  <button ng-repeat="x in numbers2[1]" ng-click="change(1,$index)" class="col design" ng-bind="bind[1][$index]"></div>
-  </button>
-      <div class="row">
-  <button ng-repeat="x in numbers2[2]" ng-click="change(2,$index)" class="col design" ng-bind="bind[2][$index]"></div>
-  </button>
-      <div class="row">
-  <button ng-repeat="x in numbers2[3]" ng-click="change(3,$index)" class="col design" ng-bind="bind[3][$index]"></div>
-  </button>
-          </div>
-   <p>Your score is: {{score}}</p>
-     <button ng-show="correct==8" ng-click="new()">Restart</button>
-  </ion-content>
+        <div class="row">
+            <button ng-repeat="x in numbers2[0]" ng-click="change(0,$index)" class="col design" ng-bind="bind[0][$index]">
+        </div>
+        </button>
+        <div class="row">
+            <button ng-repeat="x in numbers2[1]" ng-click="change(1,$index)" class="col design" ng-bind="bind[1][$index]">
+        </div>
+        </button>
+        <div class="row">
+            <button ng-repeat="x in numbers2[2]" ng-click="change(2,$index)" class="col design" ng-bind="bind[2][$index]">
+        </div>
+        </button>
+        <div class="row">
+            <button ng-repeat="x in numbers2[3]" ng-click="change(3,$index)" class="col design" ng-bind="bind[3][$index]">
+        </div>
+        </button>
+        </div>
+        <p>Your score is: {{score}}
+
+            <p text align="right">Time left={{time}}</p>
+        </p>
+
+        <button ng-show="correct==8" ng-click="new()">Restart</button>
+    
+    // new calls emptyfields,sets score to 0 correct to 0 and time back to 60
+    </ion-content>
 </ion-view>
-
