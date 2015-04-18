@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
     var pos1 = -1;
     var pos2 = -1;
 
-    var reset = function () {
+    var $scope.reset = function () {
 
         var split = function (array, noofarrays, splitnumber) {
             console.log(array);
@@ -148,7 +148,7 @@ angular.module('starter.controllers', [])
             $scope.time = 60;
             $scope.score = 0;
             $scope.correct = 0;
-            reset();
+            $scope.reset();
         };
     };
 
@@ -202,7 +202,7 @@ angular.module('starter.controllers', [])
                     $scope.time = 60;
                     $scope.score = 0;
                     $scope.correct = 0;
-                    reset();
+                    $scope.reset();
 
                 };
                 emptyfields();
