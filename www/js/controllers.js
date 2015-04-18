@@ -44,96 +44,100 @@ angular.module('starter.controllers', [])
     var pos1 = -1;
     var pos2 = -1;
 
-    var split = function (array, noofarrays, splitnumber) {
-        console.log(array);
-        var array1 = [];
-        var array2 = [];
-        for (var i = 0; i < noofarrays; i++) {
-            array1 = array.slice(0, splitnumber);
-            array2.push(array1);
-            array1 = [];
-            array.splice(0, splitnumber);
+    var reset = function () {
+
+        var split = function (array, noofarrays, splitnumber) {
+            console.log(array);
+            var array1 = [];
+            var array2 = [];
+            for (var i = 0; i < noofarrays; i++) {
+                array1 = array.slice(0, splitnumber);
+                array2.push(array1);
+                array1 = [];
+                array.splice(0, splitnumber);
+            };
+            console.log(array2);
+            return array2;
         };
-        console.log(array2);
-        return array2;
-    };
 
 
-    $scope.numbers = [{
-            "id": 1,
-            "title": "abhay"
+        $scope.numbers = [{
+                "id": 1,
+                "title": "abhay"
         },
-        {
-            "id": 2,
-            "title": "ghiridhar"
+            {
+                "id": 2,
+                "title": "ghiridhar"
         },
-        {
-            "id": 3,
-            "title": "omkar"
+            {
+                "id": 3,
+                "title": "omkar"
         },
-        {
-            "id": 4,
-            "title": "hamish"
+            {
+                "id": 4,
+                "title": "hamish"
         },
-        {
-            "id": 5,
-            "title": "jyoti"
+            {
+                "id": 5,
+                "title": "jyoti"
         },
-        {
-            "id": 6,
-            "title": "nusrat"
+            {
+                "id": 6,
+                "title": "nusrat"
         },
-        {
-            "id": 7,
-            "title": "abc"
+            {
+                "id": 7,
+                "title": "abc"
         },
-        {
-            "id": 8,
-            "title": "xyz"
+            {
+                "id": 8,
+                "title": "xyz"
         },
-        {
-            "id": 9,
-            "title": "abhay"
+            {
+                "id": 9,
+                "title": "abhay"
         },
-        {
-            "id": 10,
-            "title": "hamish"
+            {
+                "id": 10,
+                "title": "hamish"
         },
-        {
-            "id": 11,
-            "title": "omkar"
+            {
+                "id": 11,
+                "title": "omkar"
         },
-        {
-            "id": 12,
-            "title": "abc"
+            {
+                "id": 12,
+                "title": "abc"
         },
-        {
-            "id": 13,
-            "title": "xyz"
+            {
+                "id": 13,
+                "title": "xyz"
         },
-        {
-            "id": 14,
-            "title": "jyoti"
+            {
+                "id": 14,
+                "title": "jyoti"
         },
-        {
-            "id": 15,
-            "title": "nusrat"
+            {
+                "id": 15,
+                "title": "nusrat"
         },
-        {
-            "id": 16,
-            "title": "ghiridhar"
+            {
+                "id": 16,
+                "title": "ghiridhar"
         }];
 
 
-    $scope.bind = [];
+        $scope.bind = [];
 
-    for (var q = 0; q < $scope.numbers.length; q++) {
-        $scope.bind[q] = $scope.numbers[q].id;
+        for (var q = 0; q < $scope.numbers.length; q++) {
+            $scope.bind[q] = $scope.numbers[q].id;
 
+        };
+        console.log($scope.bind);
+        $scope.numbers2 = split($scope.numbers, 4, 4);
+        $scope.bind = split($scope.bind, 4, 4);
     };
-    console.log($scope.bind);
-    $scope.numbers2 = split($scope.numbers, 4, 4);
-    $scope.bind = split($scope.bind, 4, 4);
+    reset();
 
     var timer = function () {
         console.log("entered in period");
@@ -144,7 +148,7 @@ angular.module('starter.controllers', [])
             $scope.time = 60;
             $scope.score = 0;
             $scope.correct = 0;
-
+            reset();
         };
     };
 
@@ -198,6 +202,7 @@ angular.module('starter.controllers', [])
                     $scope.time = 60;
                     $scope.score = 0;
                     $scope.correct = 0;
+                    reset();
 
                 };
                 emptyfields();
