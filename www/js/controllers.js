@@ -44,7 +44,8 @@ angular.module('starter.controllers', [])
     var pos1 = -1;
     var pos2 = -1;
 
-    var $scope.reset = function () {
+
+    var reset = function () {
 
         var split = function (array, noofarrays, splitnumber) {
             console.log(array);
@@ -139,6 +140,7 @@ angular.module('starter.controllers', [])
     };
     reset();
 
+
     var timer = function () {
         console.log("entered in period");
         $scope.time -= 1;
@@ -148,13 +150,13 @@ angular.module('starter.controllers', [])
             $scope.time = 60;
             $scope.score = 0;
             $scope.correct = 0;
-            $scope.reset();
+            reset();
+
         };
     };
 
     $interval(timer, 1000, 0);
     $scope.change = function (i, index) {
-
 
         if (!(pos1 == i && pos2 == index) && proceed) {
 
@@ -202,7 +204,7 @@ angular.module('starter.controllers', [])
                     $scope.time = 60;
                     $scope.score = 0;
                     $scope.correct = 0;
-                    $scope.reset();
+                    reset();
 
                 };
                 emptyfields();
