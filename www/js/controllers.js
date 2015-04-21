@@ -33,23 +33,46 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('PlaylistsCtrl', function ($scope, $interval) {
+.controller('PlaylistsCtrl', function ($scope, $interval, $ionicPopup) {
+
+
+
+
+
+    var store = [];
     var count = 0;
-    var proceed = 1;
-    $scope.time = 60;
-    $scope.score = 0;
     $scope.correct = 0;
     var first = "";
     var second = "";
     var pos1 = -1;
     var pos2 = -1;
+    var shuffle = function (store) {
+        var currentIndex = store.length,
+            temporaryValue, randomIndex;
+
+        while (0 !== currentIndex) {
 
 
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
 
-    var reset = function () {
+
+            temporaryValue = store[currentIndex];
+            store[currentIndex] = store[randomIndex];
+            store[randomIndex] = temporaryValue;
+        }
+        console.log(store);
+        return store;
+
+    };
 
 
+    $scope.reset = function () {
+        $scope.time = 60;
+        $scope.score = 0;
 
+
+        console.log("func");
         var split = function (array, noofarrays, splitnumber) {
             console.log(array);
             var array1 = [];
@@ -62,72 +85,81 @@ angular.module('starter.controllers', [])
             };
             console.log(array2);
             return array2;
+
         };
+
+        $scope.test = [];
+        for (var i = 1; i <= 16; i++) {
+            $scope.test.push("true");
+        };
+
+        $scope.test = split($scope.test, 4, 4);
+
 
 
         $scope.numbers = [{
-                "id": 1,
-                "title": "abhay"
+                "id": "",
+                "title": "img/image1.png"
         },
             {
-                "id": 2,
-                "title": "ghiridhar"
+                "id": "",
+                "title": "img/image2.png"
         },
             {
-                "id": 3,
-                "title": "omkar"
+                "id": "",
+                "title": "img/image3.png"
         },
             {
-                "id": 4,
-                "title": "hamish"
+                "id": "",
+                "title": "img/image4.png"
         },
             {
-                "id": 5,
-                "title": "jyoti"
+                "id": "",
+                "title": "img/image5.png"
         },
             {
-                "id": 6,
-                "title": "nusrat"
+                "id": "",
+                "title": "img/image6.png"
         },
             {
-                "id": 7,
-                "title": "abc"
+                "id": "",
+                "title": "img/image7.png"
         },
             {
-                "id": 8,
-                "title": "xyz"
+                "id": "",
+                "title": "img/image8.png"
         },
             {
-                "id": 9,
-                "title": "abhay"
+                "id": "",
+                "title": "img/image1.png"
         },
             {
-                "id": 10,
-                "title": "hamish"
+                "id": "",
+                "title": "img/image2.png"
         },
             {
-                "id": 11,
-                "title": "omkar"
+                "id": "",
+                "title": "img/image3.png"
         },
             {
-                "id": 12,
-                "title": "abc"
+                "id": "",
+                "title": "img/image4.png"
         },
             {
-                "id": 13,
-                "title": "xyz"
+                "id": "",
+                "title": "img/image5.png"
         },
             {
-                "id": 14,
-                "title": "jyoti"
+                "id": "",
+                "title": "img/image6.png"
         },
             {
-                "id": 15,
-                "title": "nusrat"
+                "id": "",
+                "title": "img/image7.png"
         },
             {
-                "id": 16,
-                "title": "ghiridhar"
+                "id": "",
+                "title": "img/image8.png"
         }];
 
 
@@ -136,37 +168,73 @@ angular.module('starter.controllers', [])
         for (var q = 0; q < $scope.numbers.length; q++) {
             $scope.bind[q] = $scope.numbers[q].id;
 
+
         };
+        var store = $scope.bind;
+        console.log(store);
+        shuffle($scope.numbers);
         console.log($scope.bind);
         $scope.numbers2 = split($scope.numbers, 4, 4);
         $scope.bind = split($scope.bind, 4, 4);
 
     };
-    reset();
+    $scope.reset();
 
 
     var timer = function () {
-        console.log("entered in period");
-        $scope.time -= 1;
-        if ($scope.time == 0) {
-            proceed = 0;
-            alert("Oops! Time Up!!");
-            $scope.time = 60;
-            $scope.score = 0;
-            $scope.correct = 0;
-
+        if ($scope.time > 0) {
+            console.log("entered in period");
+            $scope.time -= 1;
+            if ($scope.time == 0) {
+                $scope.showPopup("Oh no!Time is up!");
+                $scope.correct = 0;
+            };
 
         };
     };
 
     $interval(timer, 1000, 0);
+
+    $scope.showPopup = function (message) {
+        var myPopup = $ionicPopup.show({
+            template: '',
+            title: message,
+            subTitle: '',
+            scope: $scope,
+            buttons: [
+
+                {
+                    text: '<b>Replay</b>',
+                    type: 'button-positive',
+                    onTap: function (e) {
+                        $scope.reset();
+                    }
+      }
+    ]
+        });
+    };
+    /*myPopup.then(function (res) {
+    console.log('Tapped!', res);
+});
+$timeout(function () {
+    myPopup.close(); //close the popup after 3 seconds for some reason
+}, 3000);
+};*/
+
     $scope.change = function (i, index) {
 
-        if (!(pos1 == i && pos2 == index) && proceed) {
+
+
+        //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
+        if (!(pos1 == i && pos2 == index)) {
+
+            $scope.test[i][index] = !$scope.test[i][index];
 
             var reset = function () {
                 $scope.bind[i][index] = $scope.numbers2[i][index].id;
                 $scope.bind[pos1][pos2] = $scope.numbers2[pos1][pos2].id;
+                $scope.test[i][index] = !$scope.test[i][index];
+                $scope.test[pos1][pos2] = !$scope.test[pos1][pos2];
                 emptyfields();
             };
             console.log("inside function");
@@ -204,12 +272,8 @@ angular.module('starter.controllers', [])
                 $scope.score += 10;
                 $scope.correct += 1;
                 if ($scope.correct == 8) {
-                    alert("Solved Do Play Again");
-                    $scope.time = 60;
-                    $scope.score = 0;
+                    $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds");
                     $scope.correct = 0;
-
-
                 };
                 emptyfields();
 
@@ -218,6 +282,7 @@ angular.module('starter.controllers', [])
 
 
     };
+
 
 })
 
