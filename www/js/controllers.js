@@ -98,67 +98,67 @@ angular.module('starter.controllers', [])
 
 
         $scope.numbers = [{
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image1.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image2.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image3.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image4.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image5.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image6.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image7.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image8.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image1.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image2.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image3.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image4.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image5.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image6.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image7.png"
         },
             {
-                "id": "",
+                "id": "img/card.png",
                 "title": "img/image8.png"
         }];
 
@@ -266,7 +266,7 @@ $timeout(function () {
 
             if (first != second && count == 2) {
 
-                $interval(reset, 500, 1);
+                $interval(reset, 1000, 1);
             };
             if (count == 2 && first == second) {
                 $scope.score += 10;
