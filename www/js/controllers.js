@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
 
 
 
-
+    $scope.tries = 0;
     var store = [];
     var count = 0;
     $scope.correct = 0;
@@ -186,7 +186,7 @@ angular.module('starter.controllers', [])
             console.log("entered in period");
             $scope.time -= 1;
             if ($scope.time == 0) {
-                $scope.showPopup("Oh no!Time is up!");
+                $scope.showPopup("Oh no!Time is up!" + "<br/>" + "You got " + "$scope.correct" + " right");
                 $scope.correct = 0;
             };
 
@@ -237,6 +237,7 @@ $timeout(function () {
                 $scope.test[pos1][pos2] = !$scope.test[pos1][pos2];
                 emptyfields();
             };
+            $scope.tries += 1;
             console.log("inside function");
             count = count + 1;
 
@@ -269,11 +270,11 @@ $timeout(function () {
                 $interval(reset, 1000, 1);
             };
             if (count == 2 && first == second) {
-                $scope.score += 10;
                 $scope.correct += 1;
                 if ($scope.correct == 8) {
-                    $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds");
+                    $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
                     $scope.correct = 0;
+                    $scope.time += 1;
                 };
                 emptyfields();
 
