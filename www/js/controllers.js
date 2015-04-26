@@ -186,7 +186,7 @@ angular.module('starter.controllers', [])
             console.log("entered in period");
             $scope.time -= 1;
             if ($scope.time == 0) {
-                $scope.showPopup("Oh no!Time is up!" + "<br/>" + "You got " + "$scope.correct" + " right");
+                $scope.showPopup("Oh no!Time is up!" + "<br/>" + "You got " + $scope.correct + " right");
                 $scope.correct = 0;
             };
 
@@ -271,6 +271,7 @@ $timeout(function () {
             };
             if (count == 2 && first == second) {
                 $scope.correct += 1;
+                console.log($scope.correct);
                 if ($scope.correct == 8) {
                     $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
                     $scope.correct = 0;
