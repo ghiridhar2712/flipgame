@@ -39,6 +39,7 @@ angular.module('starter.controllers', [])
 
 
     $scope.tries = 0;
+    var proceed=1;
     var store = [];
     var count = 0;
     $scope.correct = 0;
@@ -226,7 +227,7 @@ $timeout(function () {
 
 
         //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
-        if (!(pos1 == i && pos2 == index)) {
+        if (!(pos1 == i && pos2 == index) && proceed) {
 
             $scope.test[i][index] = !$scope.test[i][index];
 
@@ -263,9 +264,11 @@ $timeout(function () {
                 second = "";
                 pos1 = -1;
                 pos2 = -1;
+                proceed=1;
             };
 
             if (first != second && count == 2) {
+                proceed=0;
 
                 $interval(reset, 1000, 1);
             };
@@ -277,6 +280,7 @@ $timeout(function () {
                     $scope.correct = 0;
                     $scope.time += 1;
                 };
+                proceed=0;
                 emptyfields();
 
             };
