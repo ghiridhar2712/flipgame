@@ -41,6 +41,7 @@ angular.module('starter.controllers', [])
     $scope.tries = 0;
     var proceed=1;
     var store = [];
+    var done=[];
     var count = 0;
     $scope.correct = 0;
     var first = "";
