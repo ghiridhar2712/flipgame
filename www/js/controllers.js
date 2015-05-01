@@ -35,13 +35,11 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function ($scope, $interval, $ionicPopup) {
 
-
-
-
     $scope.tries = 0;
-    var proceed=1;
+    var proceed = 1;
     var store = [];
-    var done=[];
+    var done = [];
+    var check=[];
     var count = 0;
     $scope.correct = 0;
     var first = "";
@@ -170,7 +168,6 @@ angular.module('starter.controllers', [])
         for (var q = 0; q < $scope.numbers.length; q++) {
             $scope.bind[q] = $scope.numbers[q].id;
 
-
         };
         var store = $scope.bind;
         console.log(store);
@@ -228,7 +225,7 @@ $timeout(function () {
 
 
         //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
-        if (!(pos1 == i && pos2 == index) && proceed) {
+        if (!(pos1 == i && pos2 == index) && proceed) { 
 
             $scope.test[i][index] = !$scope.test[i][index];
 
@@ -265,15 +262,17 @@ $timeout(function () {
                 second = "";
                 pos1 = -1;
                 pos2 = -1;
-                proceed=1;
+                proceed = 1;
             };
 
             if (first != second && count == 2) {
-                proceed=0;
+                proceed = 0;
 
                 $interval(reset, 1000, 1);
             };
             if (count == 2 && first == second) {
+                check.push(first);
+                check.push(second);
                 $scope.correct += 1;
                 console.log($scope.correct);
                 if ($scope.correct == 8) {
@@ -281,7 +280,7 @@ $timeout(function () {
                     $scope.correct = 0;
                     $scope.time += 1;
                 };
-                proceed=0;
+                proceed = 0;
                 emptyfields();
 
             };
