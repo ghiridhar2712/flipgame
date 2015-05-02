@@ -80,7 +80,7 @@ angular.module('starter.controllers', [])
 
 
     $scope.reset = function () {
-        $scope.time = 60;
+        $scope.time = 600;
         $scope.score = 0;
 
 
@@ -204,8 +204,8 @@ angular.module('starter.controllers', [])
         };
     };
 
-    $interval(timer, 1000, 0);
-
+ $interval(timer, 1000, 0);
+    
     $scope.showPopup = function (message) {
         var myPopup = $ionicPopup.show({
             template: '',
@@ -234,7 +234,8 @@ $timeout(function () {
 
     $scope.change = function (i, index) {
 
-
+        if(check.indexOf($scope.numbers2[i][index].title) == -1)
+        {
 
         //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
         if (!(pos1 == i && pos2 == index) && proceed) { 
@@ -308,14 +309,14 @@ $timeout(function () {
                 if ($scope.correct == 8) {
                     $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
                     $scope.correct = 0;
-                    $scope.time += 1;
+                    
                 };
                 proceed = 0;
                 emptyfields();
 
             };
         };
-
+        };
 
     };
 
