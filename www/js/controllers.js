@@ -34,7 +34,22 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function ($scope, $interval, $ionicPopup) {
-    var emptyfields = function () {
+    
+
+    $scope.tries = 0;
+    var proceed = 1;
+    var a,b;
+    var store = [];
+    var done = [];
+    var check=[];
+    var count = 0;
+    $scope.correct = 0;
+    var first = "";
+    var second = "";
+    var pos1 = -1;
+    var pos2 = -1;
+    
+                var emptyfields = function () {
                 count = 0;
                 first = "";
                 second = "";
@@ -42,19 +57,7 @@ angular.module('starter.controllers', [])
                 pos2 = -1;
                 proceed = 1;
             };
-
-    $scope.tries = 0;
-    var proceed = 1;
-    var a,b;
-    var store = [];
-    var done = [];
-    var check = [];
-    var count = 0;
-    $scope.correct = 0;
-    var first = "";
-    var second = "";
-    var pos1 = -1;
-    var pos2 = -1;
+    
     var shuffle = function (store) {
         var currentIndex = store.length,
             temporaryValue, randomIndex;
@@ -234,8 +237,7 @@ $timeout(function () {
 
 
         //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
-        if (!(pos1 == i && pos2 == index) && proceed) {
-
+        if (!(pos1 == i && pos2 == index) && proceed) { 
 
             $scope.test[i][index] = !$scope.test[i][index];
 
@@ -249,7 +251,6 @@ $timeout(function () {
             $scope.tries += 1;
             console.log("inside function");
             count = count + 1;
-
 
             console.log($scope.bind[i][index]);
             console.log($scope.numbers2[i][index].id);
@@ -267,6 +268,7 @@ $timeout(function () {
             };
             console.log(first);
             console.log(second);
+
             
             if (count == 1) {
                 a = check.indexOf(first);
@@ -278,17 +280,7 @@ $timeout(function () {
 
             };
             
-             if (count == 2) {
-                b = check.indexOf(second);
-                 console.log(b);
-
-            };
-            if (b!= -1) {
-                emptyfields();
-
-            };
             
-
             if (first != second && count == 2) {
                 proceed = 0;
 
