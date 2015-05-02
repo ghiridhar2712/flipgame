@@ -35,6 +35,22 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function ($scope, $interval, $ionicPopup) {
     
+    if($.jStorage.get("totalgames") == undefined)
+    {
+        $.jStorage.set("totalgames", 0);
+        
+        
+    };
+     if($.jStorage.get("totalcompleted") == undefined)
+     {
+    $.jStorage.set("totalcompleted", 0);
+    
+     };
+    var totalgames = $.jStorage.get("totalgames");
+    totalgames += 1;
+    $.jStorage.set("totalgames", totalgames);
+    
+    
 
     $scope.tries = 0;
     var proceed = 1;
@@ -309,7 +325,10 @@ $timeout(function () {
                 console.log($scope.correct);
                 if ($scope.correct == 8) {
                     $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
-                      
+                    var totalcompleted = $.jStorage.get("totalcompleted");
+                    totalcompleted += 1;
+                    $.jStorage.set("totalcomplted", totalcompleted);
+    
                 };
                 proceed = 0;
                 emptyfields();
