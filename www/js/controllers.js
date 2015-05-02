@@ -37,18 +37,21 @@ angular.module('starter.controllers', [])
     
     if($.jStorage.get("totalgames") == undefined)
     {
-        $.jStorage.set("totalgames", 0);
+        $.jStorage.set("totalgames", 0);    
         
-        
+    }else{
+        $scope.totalgames = $.jStorage.get("totalgames");
     };
      if($.jStorage.get("totalcompleted") == undefined)
      {
     $.jStorage.set("totalcompleted", 0);
     
+     }else{
+        $scope.totalcompleted = $.jStorage.get("totalcompleted");
      };
-    var totalgames = $.jStorage.get("totalgames");
-    totalgames += 1;
-    $.jStorage.set("totalgames", totalgames);
+    /*$scope.totalgames = $.jStorage.get("totalgames");
+    $scope.totalgames += 1;
+    $.jStorage.set("totalgames", $scope.totalgames);*/
     
     
 
@@ -93,9 +96,23 @@ angular.module('starter.controllers', [])
         return store;
 
     };
-
+    $scope.$on('$ionicview.enter', function () {
+        console.log("initiliaze");
+    })
+    $scope.addtotal = function()
+    {
+        $scope.totalgames += 1;
+        console.log("INITIALIZER");
+    };
 
     $scope.reset = function () {
+        $scope.totalgames = $.jStorage.get("totalgames");
+        $scope.totalgames += 1;
+        console.log($scope.totalgames);
+        $.jStorage.set("totalgames", $scope.totalgames);
+        
+        
+        
         $scope.time = 60;
         $scope.score = 0;
         $scope.correct=0;
@@ -325,9 +342,9 @@ $timeout(function () {
                 console.log($scope.correct);
                 if ($scope.correct == 8) {
                     $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
-                    var totalcompleted = $.jStorage.get("totalcompleted");
-                    totalcompleted += 1;
-                    $.jStorage.set("totalcomplted", totalcompleted);
+                    $scope.totalcompleted = $.jStorage.get("totalcompleted");
+                    $scope.totalcompleted += 1;
+                    $.jStorage.set("totalcompleted", $scope.totalcompleted);
     
                 };
                 proceed = 0;
