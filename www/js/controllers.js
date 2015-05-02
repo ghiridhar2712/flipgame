@@ -34,12 +34,21 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function ($scope, $interval, $ionicPopup) {
+    var emptyfields = function () {
+                count = 0;
+                first = "";
+                second = "";
+                pos1 = -1;
+                pos2 = -1;
+                proceed = 1;
+            };
 
     $scope.tries = 0;
     var proceed = 1;
+    var a;
     var store = [];
     var done = [];
-    var check=[];
+    var check = [];
     var count = 0;
     $scope.correct = 0;
     var first = "";
@@ -225,7 +234,8 @@ $timeout(function () {
 
 
         //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
-        if (!(pos1 == i && pos2 == index) && proceed) { 
+        if (!(pos1 == i && pos2 == index) && proceed) {
+
 
             $scope.test[i][index] = !$scope.test[i][index];
 
@@ -239,6 +249,7 @@ $timeout(function () {
             $scope.tries += 1;
             console.log("inside function");
             count = count + 1;
+
 
             console.log($scope.bind[i][index]);
             console.log($scope.numbers2[i][index].id);
@@ -256,14 +267,15 @@ $timeout(function () {
             };
             console.log(first);
             console.log(second);
-            var emptyfields = function () {
-                count = 0;
-                first = "";
-                second = "";
-                pos1 = -1;
-                pos2 = -1;
-                proceed = 1;
+            if (count == 1) {
+                a = check.indexOf(first);
+
             };
+            if (a != -1) {
+                emptyfields();
+
+            };
+            
 
             if (first != second && count == 2) {
                 proceed = 0;
