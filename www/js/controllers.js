@@ -281,6 +281,19 @@ $timeout(function () {
 
             };
             
+              if (count == 2) {
+                b = check.indexOf(second);
+                console.log(b);
+
+            };
+            if (b != -1) {
+                count=1;
+                second="";
+
+            };
+            
+            
+            
             
             if (first != second && count == 2) {
                 proceed = 0;
