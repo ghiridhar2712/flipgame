@@ -267,8 +267,10 @@ $timeout(function () {
             };
             console.log(first);
             console.log(second);
+            
             if (count == 1) {
                 a = check.indexOf(first);
+                console.log(a);
 
             };
             if (a != -1) {
@@ -277,7 +279,8 @@ $timeout(function () {
             };
             
              if (count == 2) {
-                b = check.indexOf(second;
+                b = check.indexOf(second);
+                 console.log(b);
 
             };
             if (b!= -1) {
