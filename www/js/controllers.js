@@ -45,7 +45,7 @@ angular.module('starter.controllers', [])
 
     $scope.tries = 0;
     var proceed = 1;
-    var a;
+    var a,b;
     var store = [];
     var done = [];
     var check = [];
@@ -272,6 +272,15 @@ $timeout(function () {
 
             };
             if (a != -1) {
+                emptyfields();
+
+            };
+            
+             if (count == 2) {
+                b = check.indexOf(second;
+
+            };
+            if (b!= -1) {
                 emptyfields();
 
             };
