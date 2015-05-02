@@ -80,8 +80,9 @@ angular.module('starter.controllers', [])
 
 
     $scope.reset = function () {
-        $scope.time = 600;
+        $scope.time = 60;
         $scope.score = 0;
+        $scope.correct=0;
 
 
         console.log("func");
@@ -193,7 +194,7 @@ angular.module('starter.controllers', [])
 
 
     var timer = function () {
-        if ($scope.time > 0) {
+        if ($scope.time > 0 && $scope.correct != 8) {
             console.log("entered in period");
             $scope.time -= 1;
             if ($scope.time == 0) {
@@ -204,7 +205,7 @@ angular.module('starter.controllers', [])
         };
     };
 
- $interval(timer, 1000, 0);
+   $interval(timer,1000,0);
     
     $scope.showPopup = function (message) {
         var myPopup = $ionicPopup.show({
@@ -239,7 +240,7 @@ $timeout(function () {
 
         //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
         if (!(pos1 == i && pos2 == index) && proceed) { 
-
+            
             $scope.test[i][index] = !$scope.test[i][index];
 
             var reset = function () {
@@ -308,11 +309,11 @@ $timeout(function () {
                 console.log($scope.correct);
                 if ($scope.correct == 8) {
                     $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
-                    $scope.correct = 0;
-                    
+                      
                 };
                 proceed = 0;
                 emptyfields();
+              
 
             };
         };
