@@ -276,6 +276,7 @@ $timeout(function () {
 
             };
             if (a != -1) {
+                proceed=0;
                 emptyfields();
 
             };
