@@ -1,8 +1,8 @@
 /* Empty. Add your own CSS if you like */
 
 .design {
-    height: 63px;
-    background-color: red;
+    height: 79px;
+   /* background-color: red;*/
     border: solid 1px;
 }
 
@@ -11,7 +11,15 @@
     background-repeat: no-repeat;
     -webkit-transition: 1s;
     transition: 1s;
+    background-position-x: 50%;
+    background-position-y: 50%;
 }
+
+.popup
+{
+
+    }
+
 
 .straight {
     
@@ -28,3 +36,20 @@
     ms-transform: rotateY(180deg);
     moz-transform: rotateY(180deg);
 }
+.bgimage
+{
+background-image: url(../img/bgimage2.jpg);
+     background-image: url(../img/bgimage2.jpg);
+  background-position-x: -37%;
+  background-position-y: 8%;
+}
+.clock
+{
+background-color: darkgrey;
+    opacity: 0.5;
+    border: solid 1px;
+      font-weight: 900;
+     border-radius: 10px;
+  border: 3px solid ;
+}
+
