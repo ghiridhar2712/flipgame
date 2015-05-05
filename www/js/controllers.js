@@ -141,7 +141,7 @@ angular.module('starter.controllers', [])
 
 
         $scope.numbers = [{
-                "id": "img/card.png",
+                "id": "img/16.jpg",
                 "title": "img/image1.png"
         },
             {
