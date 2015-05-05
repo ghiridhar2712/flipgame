@@ -68,4 +68,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
+})
+.filter('secondsfilter', function() {
+    return function(input) {
+        var minutes, seconds;
+        minutes=Math.floor(input/60);
+        seconds=Math.floor(input%60);
+        return minutes+":"+seconds;
+    };
 });

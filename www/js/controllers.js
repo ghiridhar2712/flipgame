@@ -65,7 +65,7 @@ angular.module('starter.controllers', [])
     var second = "";
     var pos1 = -1;
     var pos2 = -1;
-
+    $scope.moves=0;
     var emptyfields = function () {
         count = 0;
         first = "";
@@ -113,7 +113,7 @@ angular.module('starter.controllers', [])
         $scope.time = 60;
         $scope.score = 0;
         $scope.correct = 0;
-
+        $scope.moves=0;
 
         console.log("func");
         var split = function (array, noofarrays, splitnumber) {
@@ -142,66 +142,66 @@ angular.module('starter.controllers', [])
 
         $scope.numbers = [{
                 "id": "img/16.jpg",
-                "title": "img/image1.png"
+                "title": "img/1image.jpg"
         },
             {
-                "id": "img/card.png",
-                "title": "img/image2.png"
+                "id": "img/16.jpg",
+                "title": "img/2image.jpg"
         },
             {
-                "id": "img/card.png",
-                "title": "img/image3.png"
+                "id": "img/16.jpg",
+                "title": "img/3image.jpg"
         },
             {
-                "id": "img/card.png",
+                "id": "img/16.jpg",
                 "title": "img/image4.png"
         },
             {
-                "id": "img/card.png",
+                 "id": "img/16.jpg",
                 "title": "img/image5.png"
         },
             {
-                "id": "img/card.png",
+                 "id": "img/16.jpg",
                 "title": "img/image6.png"
         },
             {
-                "id": "img/card.png",
+                "id": "img/16.jpg",
                 "title": "img/image7.png"
         },
             {
-                "id": "img/card.png",
+                 "id": "img/16.jpg",
                 "title": "img/image8.png"
         },
             {
-                "id": "img/card.png",
-                "title": "img/image1.png"
+                "id": "img/16.jpg",
+                "title": "img/1image.jpg"
         },
             {
-                "id": "img/card.png",
+                "id": "img/16.jpg",
                 "title": "img/image2.png"
         },
             {
-                "id": "img/card.png",
-                "title": "img/image3.png"
+                 "id": "img/16.jpg",
+               "title": "img/3image.jpg"
         },
             {
-                "id": "img/card.png",
+                 "id": "img/16.jpg",
                 "title": "img/image4.png"
         },
             {
-                "id": "img/card.png",
+                 "id": "img/16.jpg",
                 "title": "img/image5.png"
         },
             {
-                "id": "img/card.png",
+                "id": "img/16.jpg",
                 "title": "img/image6.png"
         },
             {
-                "id": "img/card.png",
+                "id": "img/16.jpg",
                 "title": "img/image7.png"
         },
             {
-                "id": "img/card.png",
+                 "id": "img/16.jpg",
                 "title": "img/image8.png"
         }];
 
@@ -226,9 +226,10 @@ angular.module('starter.controllers', [])
     var timer = function () {
         if ($scope.time > 0 && $scope.correct != 8) {
             console.log("entered in period");
-            $scope.time -= 1;
+            $scope.time -= 10;
             if ($scope.time == 0 && $scope.correct != 8) {
                 $scope.showPopup("Oh no!Time is up!" + "<br/>" + "You got " + $scope.correct + " right");
+                $interval.cancel(timer);
 
             };
 
@@ -238,9 +239,12 @@ angular.module('starter.controllers', [])
     $interval(timer, 1000, 0);
 
     $scope.showPopup = function (message) {
+        $scope.msg = message;
+        console.log("popup called");
         var myPopup = $ionicPopup.show({
-            template: '',
-            title: message,
+            title: "hey",
+            template: '<div class="popup"><h1></h1>'+message+'</div>',
+            
             subTitle: '',
             scope: $scope,
             buttons: [
@@ -273,6 +277,7 @@ $timeout(function () {
                 $scope.test[i][index] = !$scope.test[i][index];
 
                 var reset = function () {
+                    console.log("reset");
                     $scope.bind[i][index] = $scope.numbers2[i][index].id;
                     $scope.bind[pos1][pos2] = $scope.numbers2[pos1][pos2].id;
                     $scope.test[i][index] = !$scope.test[i][index];
@@ -282,6 +287,7 @@ $timeout(function () {
                 $scope.tries += 1;
                 console.log("inside function");
                 count = count + 1;
+                $scope.moves=Math.floor($scope.tries/2);
 
                 console.log($scope.bind[i][index]);
                 console.log($scope.numbers2[i][index].id);
@@ -341,6 +347,7 @@ $timeout(function () {
                         $scope.totalcompleted = $.jStorage.get("totalcompleted");
                         $scope.totalcompleted += 1;
                         $.jStorage.set("totalcompleted", $scope.totalcompleted);
+                        $interval.cancel(timer);
 
                     };
                     proceed = 0;
