@@ -110,7 +110,7 @@ angular.module('starter.controllers', [])
 
         check=[];
         proceed = 1;
-        $scope.time = 90;
+        $scope.time = 60;
         $scope.score = 0;
         $scope.correct = 0;
 
@@ -227,7 +227,7 @@ angular.module('starter.controllers', [])
         if ($scope.time > 0 && $scope.correct != 8) {
             console.log("entered in period");
             $scope.time -= 1;
-            if ($scope.time == 0) {
+            if ($scope.time == 0 && $scope.correct != 8) {
                 $scope.showPopup("Oh no!Time is up!" + "<br/>" + "You got " + $scope.correct + " right");
                 
             };
@@ -337,7 +337,7 @@ $timeout(function () {
                     $scope.correct += 1;
                     console.log($scope.correct);
                     if ($scope.correct == 8) {
-                        $scope.showPopup("Congratulations! you completed in " + (90 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
+                        $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
                         $scope.totalcompleted = $.jStorage.get("totalcompleted");
                         $scope.totalcompleted += 1;
                         $.jStorage.set("totalcompleted", $scope.totalcompleted);
