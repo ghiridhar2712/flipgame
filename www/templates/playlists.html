@@ -1,6 +1,6 @@
 <ion-view view-title="Flipgame">
     <ion-content>
-
+        <div >
         <div class="row">
             <!--ng-bind="bind[0][$index]"-->
             <div ng-repeat="x in numbers2[0]" ng-click="change(0,$index)" class="col design card" ng-class="{straight:test[0][$index] ,back: !test[0][$index] }" style="background-image:url({{bind[0][$index]}})"></div>
@@ -18,12 +18,13 @@
             <div ng-repeat="x in numbers2[3]" ng-click="change(3,$index)" class="col design card" ng-class="{straight:test[3][$index] ,back: !test[3][$index] }" style="background-image: url({{bind[3][$index]}})"></div>
         </div>
 
-        </div>
+      
         <p>Correct pairs={{correct}}</p>
         <p text align="right">Time left={{time}}</p>
         <br>
         <button ng-click="reset()">Reset</button>
 
+</div>
 
     </ion-content>
 </ion-view>
