@@ -108,7 +108,7 @@ angular.module('starter.controllers', [])
         console.log($scope.totalgames);
         $.jStorage.set("totalgames", $scope.totalgames);
 
-        check=[];
+        check = [];
         proceed = 1;
         $scope.time = 60;
         $scope.score = 0;
@@ -229,7 +229,7 @@ angular.module('starter.controllers', [])
             $scope.time -= 1;
             if ($scope.time == 0 && $scope.correct != 8) {
                 $scope.showPopup("Oh no!Time is up!" + "<br/>" + "You got " + $scope.correct + " right");
-                
+
             };
 
         };
