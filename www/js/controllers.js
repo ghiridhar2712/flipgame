@@ -112,8 +112,8 @@ angular.module('starter.controllers', [])
         $.jStorage.set("totalgames", $scope.totalgames);
         
         
-        
-        $scope.time = 60;
+        proceed=1;
+        $scope.time = 600;
         $scope.score = 0;
         $scope.correct=0;
 
@@ -225,7 +225,7 @@ angular.module('starter.controllers', [])
     };
     $scope.reset();
 
-
+    proceed=1;
     var timer = function () {
         if ($scope.time > 0 && $scope.correct != 8) {
             console.log("entered in period");
@@ -273,6 +273,7 @@ $timeout(function () {
 
         //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
         if (!(pos1 == i && pos2 == index) && proceed) { 
+            console.log("Inside");
             
             $scope.test[i][index] = !$scope.test[i][index];
 
