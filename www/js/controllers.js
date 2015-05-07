@@ -111,9 +111,6 @@ angular.module('starter.controllers', [])
 
 
         proceed = 1;
-        $scope.time = 600;
-
-
         check = [];
         proceed = 1;
         $scope.time = 60;
@@ -234,9 +231,9 @@ angular.module('starter.controllers', [])
         if ($scope.time > 0 && $scope.correct != 8) {
             console.log("entered in period");
             $scope.time -= 1;
-            if ($scope.time == 0 && $scope.correct != 8) {
+            if ($scope.time == 0 && $scope.correct != 8 || $scope.correct==8) {
                 $scope.showPopup("Oh no!Time is up!" + "<br/>" + "You got " + $scope.correct + " right");
-                $interval.cancel(timer);
+            
 
             };
 
@@ -362,7 +359,7 @@ $timeout(function () {
                             $scope.totalcompleted = $.jStorage.get("totalcompleted");
                             $scope.totalcompleted += 1;
                             $.jStorage.set("totalcompleted", $scope.totalcompleted);
-                            $interval.cancel(timer);
+                            
 
                         };
                         proceed = 0;
