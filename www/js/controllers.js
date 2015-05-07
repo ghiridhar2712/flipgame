@@ -65,7 +65,7 @@ angular.module('starter.controllers', [])
     var second = "";
     var pos1 = -1;
     var pos2 = -1;
-    $scope.moves=0;
+    $scope.moves = 0;
     var emptyfields = function () {
         count = 0;
         first = "";
@@ -107,20 +107,20 @@ angular.module('starter.controllers', [])
         $scope.totalgames += 1;
         console.log($scope.totalgames);
         $.jStorage.set("totalgames", $scope.totalgames);
-<<<<<<< HEAD
-        
-        
-        proceed=1;
+
+
+
+        proceed = 1;
         $scope.time = 600;
-=======
+
 
         check = [];
         proceed = 1;
         $scope.time = 60;
->>>>>>> origin/master
+
         $scope.score = 0;
         $scope.correct = 0;
-        $scope.moves=0;
+        $scope.moves = 0;
 
         console.log("func");
         var split = function (array, noofarrays, splitnumber) {
@@ -164,11 +164,11 @@ angular.module('starter.controllers', [])
                 "title": "img/image4.png"
         },
             {
-                 "id": "img/16.jpg",
+                "id": "img/16.jpg",
                 "title": "img/image5.png"
         },
             {
-                 "id": "img/16.jpg",
+                "id": "img/16.jpg",
                 "title": "img/image6.png"
         },
             {
@@ -176,7 +176,7 @@ angular.module('starter.controllers', [])
                 "title": "img/image7.png"
         },
             {
-                 "id": "img/16.jpg",
+                "id": "img/16.jpg",
                 "title": "img/image8.png"
         },
             {
@@ -188,15 +188,15 @@ angular.module('starter.controllers', [])
                 "title": "img/image2.png"
         },
             {
-                 "id": "img/16.jpg",
-               "title": "img/3image.jpg"
+                "id": "img/16.jpg",
+                "title": "img/3image.jpg"
         },
             {
-                 "id": "img/16.jpg",
+                "id": "img/16.jpg",
                 "title": "img/image4.png"
         },
             {
-                 "id": "img/16.jpg",
+                "id": "img/16.jpg",
                 "title": "img/image5.png"
         },
             {
@@ -208,7 +208,7 @@ angular.module('starter.controllers', [])
                 "title": "img/image7.png"
         },
             {
-                 "id": "img/16.jpg",
+                "id": "img/16.jpg",
                 "title": "img/image8.png"
         }];
 
@@ -229,11 +229,11 @@ angular.module('starter.controllers', [])
     };
     $scope.reset();
 
-    proceed=1;
+    proceed = 1;
     var timer = function () {
         if ($scope.time > 0 && $scope.correct != 8) {
             console.log("entered in period");
-            $scope.time -= 10;
+            $scope.time -= 1;
             if ($scope.time == 0 && $scope.correct != 8) {
                 $scope.showPopup("Oh no!Time is up!" + "<br/>" + "You got " + $scope.correct + " right");
                 $interval.cancel(timer);
@@ -250,8 +250,8 @@ angular.module('starter.controllers', [])
         console.log("popup called");
         var myPopup = $ionicPopup.show({
             title: "hey",
-            template: '<div class="popup"><h1></h1>'+message+'</div>',
-            
+            template: '<div class="popup"><h1></h1>' + message + '</div>',
+
             subTitle: '',
             scope: $scope,
             buttons: [
@@ -278,101 +278,102 @@ $timeout(function () {
 
         if (check.indexOf($scope.numbers2[i][index].title) == -1) {
 
-<<<<<<< HEAD
-        //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
-        if (!(pos1 == i && pos2 == index) && proceed) { 
-            console.log("Inside");
-            
-            $scope.test[i][index] = !$scope.test[i][index];
-=======
+
             //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
             if (!(pos1 == i && pos2 == index) && proceed) {
->>>>>>> origin/master
+                console.log("Inside");
 
                 $scope.test[i][index] = !$scope.test[i][index];
 
-                var reset = function () {
-                    console.log("reset");
-                    $scope.bind[i][index] = $scope.numbers2[i][index].id;
-                    $scope.bind[pos1][pos2] = $scope.numbers2[pos1][pos2].id;
+                //CHECK IF SECOND TOUCH IS NOT SAME AS FIRST
+                if (!(pos1 == i && pos2 == index) && proceed) {
+
+
                     $scope.test[i][index] = !$scope.test[i][index];
-                    $scope.test[pos1][pos2] = !$scope.test[pos1][pos2];
-                    emptyfields();
-                };
-                $scope.tries += 1;
-                console.log("inside function");
-                count = count + 1;
-                $scope.moves=Math.floor($scope.tries/2);
 
-                console.log($scope.bind[i][index]);
-                console.log($scope.numbers2[i][index].id);
-                $scope.bind[i][index] = $scope.numbers2[i][index].title;
+                    var reset = function () {
+                        console.log("reset");
+                        $scope.bind[i][index] = $scope.numbers2[i][index].id;
+                        $scope.bind[pos1][pos2] = $scope.numbers2[pos1][pos2].id;
+                        $scope.test[i][index] = !$scope.test[i][index];
+                        $scope.test[pos1][pos2] = !$scope.test[pos1][pos2];
+                        emptyfields();
+                    };
+                    $scope.tries += 1;
+                    console.log("inside function");
+                    count = count + 1;
+                    $scope.moves = Math.floor($scope.tries / 2);
 
-                if (count == 1) {
-                    first = $scope.numbers2[i][index].title;
-                    pos1 = i;
-                    pos2 = index;
+                    console.log($scope.bind[i][index]);
+                    console.log($scope.numbers2[i][index].id);
+                    $scope.bind[i][index] = $scope.numbers2[i][index].title;
 
-                };
-                if (count == 2) {
-                    second = $scope.numbers2[i][index].title;
-
-                };
-                console.log(first);
-                console.log(second);
-
-
-                if (count == 1) {
-                    a = check.indexOf(first);
-                    console.log(a);
-
-                };
-                if (a != -1) {
-                    proceed = 0;
-                    emptyfields();
-
-                };
-
-                if (count == 2) {
-                    b = check.indexOf(second);
-                    console.log(b);
-
-                };
-                if (b != -1) {
-                    count = 1;
-                    second = "";
-
-                };
-
-
-
-
-                if (first != second && count == 2) {
-                    proceed = 0;
-
-                    $interval(reset, 1000, 1);
-                };
-                if (count == 2 && first == second) {
-                    check.push(first);
-                    check.push(second);
-                    $scope.correct += 1;
-                    console.log($scope.correct);
-                    if ($scope.correct == 8) {
-                        $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
-                        $scope.totalcompleted = $.jStorage.get("totalcompleted");
-                        $scope.totalcompleted += 1;
-                        $.jStorage.set("totalcompleted", $scope.totalcompleted);
-                        $interval.cancel(timer);
+                    if (count == 1) {
+                        first = $scope.numbers2[i][index].title;
+                        pos1 = i;
+                        pos2 = index;
 
                     };
-                    proceed = 0;
-                    emptyfields();
+                    if (count == 2) {
+                        second = $scope.numbers2[i][index].title;
+
+                    };
+                    console.log(first);
+                    console.log(second);
 
 
+                    if (count == 1) {
+                        a = check.indexOf(first);
+                        console.log(a);
+
+                    };
+                    if (a != -1) {
+                        proceed = 0;
+                        emptyfields();
+
+                    };
+
+                    if (count == 2) {
+                        b = check.indexOf(second);
+                        console.log(b);
+
+                    };
+                    if (b != -1) {
+                        count = 1;
+                        second = "";
+
+                    };
+
+
+
+
+                    if (first != second && count == 2) {
+                        proceed = 0;
+
+                        $interval(reset, 1000, 1);
+                    };
+                    if (count == 2 && first == second) {
+                        check.push(first);
+                        check.push(second);
+                        $scope.correct += 1;
+                        console.log($scope.correct);
+                        if ($scope.correct == 8) {
+                            $scope.showPopup("Congratulations! you completed in " + (60 - $scope.time) + " seconds." + "<br/>" + "You made " + ($scope.tries) / 2 + " attempts in all.");
+                            $scope.totalcompleted = $.jStorage.get("totalcompleted");
+                            $scope.totalcompleted += 1;
+                            $.jStorage.set("totalcompleted", $scope.totalcompleted);
+                            $interval.cancel(timer);
+
+                        };
+                        proceed = 0;
+                        emptyfields();
+
+
+                    };
                 };
             };
-        };
 
+        };
     };
 
 
