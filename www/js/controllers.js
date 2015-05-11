@@ -42,11 +42,6 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function ($scope, $interval, $ionicPopup) {
     
-     
-    
-    
-                       
-
     if ($.jStorage.get("totalgames") == undefined) {
         $.jStorage.set("totalgames", 0);
 
