@@ -52,6 +52,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: "templates/playlists.html",
+          controller: 'menuctrl'
+        }
+      }
+    })
+   .state('app.game', {
+      url: "/game",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/game.html",
           controller: 'PlaylistsCtrl'
         }
       }
@@ -62,7 +71,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
+        controller: ''
       }
     }
   });

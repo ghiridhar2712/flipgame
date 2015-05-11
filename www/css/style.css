@@ -9,16 +9,11 @@
 .card {
     background-size: 100%;
     background-repeat: no-repeat;
-    -webkit-transition: 1s;
-    transition: 1s;
+    -webkit-transition: 1.5s;
+    transition: 1.5s;
     background-position-x: 50%;
     background-position-y: 50%;
 }
-
-.popup
-{
-
-    }
 
 
 .straight {
@@ -53,3 +48,11 @@ background-color: darkgrey;
   border: 3px solid ;
 }
 
+.buttoncolor
+{
+color: indigo !important ;
+}
+.align
+{
+text-align: center;
+}

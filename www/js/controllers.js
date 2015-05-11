@@ -32,8 +32,20 @@ angular.module('starter.controllers', [])
         }, 1000);
     };
 })
+.controller('menuctrl', function ($scope, $ionicModal, $timeout) {
+    console.log("game controller");
+    $scope.info = function()
+     {
+           alert("It is a simple game wherein you need to click on the cards which consists of some image at it's rear view. All you need to do is that click on the cards, commit the image and their positions to memory. As soon you get a pair of same images you will reap points. Note that it is a time bound game. Please do have an eye on it.");
+     };
+})
 
 .controller('PlaylistsCtrl', function ($scope, $interval, $ionicPopup) {
+    
+     
+    
+    
+                       
 
     if ($.jStorage.get("totalgames") == undefined) {
         $.jStorage.set("totalgames", 0);
@@ -112,7 +124,6 @@ angular.module('starter.controllers', [])
 
         proceed = 1;
         check = [];
-        proceed = 1;
         $scope.time = 60;
 
         $scope.score = 0;
@@ -182,7 +193,7 @@ angular.module('starter.controllers', [])
         },
             {
                 "id": "img/16.jpg",
-                "title": "img/image2.png"
+                "title": "img/2image.jpg"
         },
             {
                 "id": "img/16.jpg",
@@ -226,9 +237,9 @@ angular.module('starter.controllers', [])
     };
     $scope.reset();
 
-    proceed = 1;
+    
     var timer = function () {
-        if ($scope.time > 0 && $scope.correct != 8) {
+        if ($scope.time > 0 && $scope.correct != 8 && proceed) {
             console.log("entered in period");
             $scope.time -= 1;
             if ($scope.time == 0 && $scope.correct != 8 || $scope.correct==8) {
