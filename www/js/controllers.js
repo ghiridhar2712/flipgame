@@ -34,11 +34,9 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function ($scope, $interval, $ionicPopup) {
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> parent of 7a98bb8... modified
+    
+
     if ($.jStorage.get("totalgames") == undefined) {
         $.jStorage.set("totalgames", 0);
 
@@ -244,8 +242,11 @@ angular.module('starter.controllers', [])
         };
     };
 
-    $interval(timer, 1000, 0);
-
+    timing = $interval(timer, 1000, 0);
+if (angular.isDefined(timing)) {
+            $interval.cancel(timing);
+            timing = undefined;
+          }
     $scope.showPopup = function (message) {
         $scope.msg = message;
         console.log("popup called");
